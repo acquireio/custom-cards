@@ -5,7 +5,10 @@
 
 ## Introduction
 Custom cards allow data display of other systems to be shown within the unified view of the Acquire. Custom cards appear within the middle and right hand positions of the dashboard. Using this feature, custom apps can create a card to display data info on contact.
+
 <br>
+
+![dashboard](screenshots/dashboard.png)
 
 * Interaction-cards (Middle of agent dashboard)
 * General-cards (Right-side of agent dashboard)
