@@ -60,14 +60,451 @@ When creating a card, there is a collection of supported types that can be inclu
 
 #### Text
 ![dashboard](screenshots/text-sample.png)
+```
+app.post("/text-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "text",
+                        "text": "This is a header",
+                        "displayStyle": "header"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is a header",
+                        "displayStyle": "header",
+                        "style": "error",
+                        "align": "right"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is a header",
+                        "displayStyle": "header",
+                        "style": "success",
+                        "align": "right"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is a header",
+                        "displayStyle": "header",
+                        "style": "muted",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is paragraph text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                        "displayStyle": "paragraph"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is muted text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                        "style": "muted"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                        "style": "error"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                        "style": "success"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Left aligned",
+                        "align": "left"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Center aligned",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Right aligned",
+                        "align": "right"
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
 #### Image
 ![dashboard](screenshots/image-sample.png)
+```
+app.post("/image-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "image",
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "width": 200,
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "height": 200,
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "width": 200,
+                        "height": 200,
+                        "align": "right",
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "width": 200,
+                        "height": 200,
+                        "align": "center",
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "rounded": true,
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "width": 200,
+                        "height": 200,
+                        "rounded": true,
+                        "url": "https://i.picsum.photos/id/1025/4951/3301.jpg"
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
 #### Link
 ![dashboard](screenshots/link-sample.png)
+```
+app.post("/link-initialize", (req, res, next) => {
+    console.log('body==initialize=', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "link",
+                        "visibleText": "Click Click Click",
+                        "url": "https://google.com"
+                    },
+                    {
+                        "type": "link",
+                        "visibleText": "Click Click Click",
+                        "url": "https://google.com",
+                        "showLink": false
+                    },
+                    {
+                        "type": "link",
+                        "visibleText": "Click Click Click",
+                        "url": "https://google.com",
+                        "showLink": true
+                    },
+                    {
+                        "type": "link",
+                        "url": "https://google.com",
+                        "showLink": false
+                    },
+                    {
+                        "type": "link",
+                        "url": "https://google.com",
+                        "showLink": true
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
+#### list
+![dashboard](screenshots/list-sample.png)
+```$xslt
+app.post("/list-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "list",
+                        "items": [
+                            {
+                                "type": "item",
+                                "id": "selected_article",
+                                "title": "**WeChat**",
+                                "subtitle": "WeChat is a Chinese multi-purp...",
+                                "image": {
+                                    "url": "https://picsum.photos/id/0/5616/3744",
+                                    "width": 30,
+                                    "rounded": true,
+                                    "height": 30
+                                },
+                                "value": "https://5d03c.lml.io/help/wechat",
+                                "action": {
+                                    "type": "submit"
+                                }
+                            },
+                            {
+                                "type": "item",
+                                "id": "selected_article",
+                                "title": "**Missed Chats**",
+                                "subtitle": "You can use the &amp;quot;Filters&amp;...",
+                                "image": {
+                                    "url": "https://picsum.photos/id/0/5616/3744",
+                                    "width": 30,
+                                    "height": 30
+                                },
+                                "value": "https://5d03c.lml.io/help/missed-chats",
+                                "action": {
+                                    "type": "submit"
+                                }
+                            },
+                            {
+                                "type": "item",
+                                "id": "selected_article",
+                                "title": "**Live Chat Profiles**",
+                                "subtitle": "The chat profile provides a de...",
+                                "image": {
+                                    "url": "https://picsum.photos/id/0/5616/3744",
+                                    "width": 30,
+                                    "height": 30
+                                },
+                                "value": "https://5d03c.lml.io/help/chat-profile",
+                                "action": {
+                                    "type": "submit"
+                                }
+                            },
+                            {
+                                "type": "item",
+                                "id": "selected_article",
+                                "title": "**Dialog Flow Chatbot **",
+                                "subtitle": "As you may now know Acquire ha...",
+                                "image": {
+                                    "url": "https://picsum.photos/id/0/5616/3744",
+                                    "width": 30,
+                                    "height": 30
+                                },
+                                "value": "https://5d03c.lml.io/help/dialog-flow-chatbot-integration",
+                                "action": {
+                                    "type": "submit"
+                                }
+                            },
+                            {
+                                "type": "item",
+                                "id": "selected_article",
+                                "title": "**How to use Live Chat in Acquire**",
+                                "subtitle": "This article is a basic overview...",
+                                "image": {
+                                    "url": "https://picsum.photos/id/0/5616/3744",
+                                    "width": 30,
+                                    "height": 30
+                                },
+                                "value": "https://5d03c.lml.io/help/how-to-use-live-chat-in-acquire",
+                                "action": {
+                                    "type": "submit"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+
+    });
+});
+```
+
 #### Data Table
 ![dashboard](screenshots/table-sample.png)
+```
+app.post("/table-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "data-table",
+                        "title": "Order details",
+                        "verticalAlign": "middle",
+                        "style": "list",
+                        "column": "2",
+                        "items": [
+                            {
+                                "type": "item",
+                                "key": "Order ID",
+                                "value": "AMA#12062020"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Order Created Date",
+                                "value": "Thursday, 12 March 2020"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Order Updated Date",
+                                "value": "Thursday, 12 March 2020"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Order Status",
+                                "value": "Processing"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Payment Method",
+                                "value": "Gpay"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Amount",
+                                "value": "10000"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Discount Amount",
+                                "value": "1000"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Offer Applied",
+                                "value": "YES"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Coupon Applied",
+                                "value": "YES"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Coupon Amount",
+                                "value": "500"
+                            },
+                            {
+                                "type": "item",
+                                "key": "TAX",
+                                "value": "200"
+                            },
+                            {
+                                "type": "item",
+                                "key": "Final Amount",
+                                "value": "8700"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
 #### Cards
 ![dashboard](screenshots/card-sample.png)
+```
+app.post("/card-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "card",
+                        "style": "single",
+                        "items": [
+                            {
+                                "type": "item",
+                                "title": "Judi Colton",
+                                "subtitle": "Tech Head, California",
+                                "bordered": true,
+                                "align": "center",
+                                "image": {
+                                    "url": "https://cdn.pixabay.com/photo/2015/03/03/18/58/girl-657753_960_720.jpg",
+                                    "height": 300
+                                },
+                                "action": {
+                                    "type": "url",
+                                    "url": "https://google.com/0"
+                                },
+                                "text": [
+                                    {
+                                        "type": "text",
+                                        "text": "This is paragraph text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "displayStyle": "paragraph"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is muted text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "muted"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "error"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "success"
+                                    }
+                                ],
+                                "buttons": [
+                                    {
+                                        "type": "button",
+                                        "label": "Muted button",
+                                        "style": "muted",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/5"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "label": "Error button",
+                                        "style": "error",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/6"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "label": "Success button",
+                                        "style": "success",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/7"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
 #### [divider | button | spacer | feedback]
 ![dashboard](screenshots/mix-sample1.png)
 ```
@@ -157,4 +594,427 @@ app.post("/multi-initialize", (req, res, next) => {
       });
 ```
 
-#### Text
+#### Section
+![dashboard](screenshots/section-sample.png)
+```app.post("/section-initialize", (req, res, next) => {
+       console.log('contact-information', req.body);
+       res.send({
+           "canvas": {
+               "content": {
+                   "components": [
+                       {
+                           "type": "section",
+                           "verticalAlign": "middle",
+                           "align": "separate",
+                           "items": [
+                               {
+                                   "type": "card",
+                                   "style": "horizontal",
+                                   "items": [
+                                       {
+                                           "type": "item",
+                                           "title": "Delivery Order #LP01206",
+                                           "subtitle": "Pizza can makes anyone happy.",
+                                           "image": {
+                                               "url": "https://cdn.pixabay.com/photo/2016/05/30/14/10/delivery-guy-1424808_960_720.png",
+                                               "width": 50,
+                                               "height": 50,
+                                               "rounded": true
+                                           }
+                                       }
+                                   ]
+                               },
+                               {
+                                   "type": "list",
+                                   "align": "right",
+                                   "items": [
+                                       {
+                                           "type": "item_list",
+                                           "style": "button",
+                                           "items": [
+                                               {
+                                                   "type": "button",
+                                                   "style": "secondary",
+                                                   "label": "Call Restaurant"
+                                               },
+                                               {
+                                                   "type": "button",
+                                                   "label": "Support",
+                                                   "style": "secondary"
+                                               }
+                                           ]
+                                       }
+                                   ]
+                               }
+                           ]
+                       },
+                       {
+                           "type": "divider"
+                       },
+                       {
+                           "type": "section",
+                           "verticalAlign": "top",
+                           "align": "separate",
+                           "items": [
+                               {
+                                   "type": "data-table",
+                                   "title": "Order Summary",
+                                   "verticalAlign": "top",
+                                   "style": "table",
+                                   "items": [
+                                       {
+                                           "type": "item",
+                                           "key": "Cheezy-7 Pizza",
+                                           "value": "3"
+                                       },
+                                       {
+                                           "type": "item",
+                                           "key": "Burn to Hell Pizza",
+                                           "value": "2"
+                                       },
+                                       {
+                                           "type": "item",
+                                           "key": "Veg Red Sauce Pasta",
+                                           "value": "1"
+                                       },
+                                       {
+                                           "type": "item",
+                                           "key": "Cheese Garlic Bread",
+                                           "value": "3"
+                                       },
+                                       {
+                                           "type": "item",
+                                           "key": "Total",
+                                           "value": "5500",
+                                           "style": "same"
+                                       }
+                                   ]
+                               },
+                               {
+                                   "type": "data-table",
+                                   "title": "Order details",
+                                   "verticalAlign": "middle",
+                                   "style": "list",
+                                   "action": {
+                                       "type": "button",
+                                       "label": "Delivered By"
+                                   },
+                                   "items": [
+                                       {
+                                           "type": "item",
+                                           "key": "Address",
+                                           "value": "1201, Times Square I Thaltej,\nShilaj Rd, opposite Rambag,\nThaltej, Ahmedabad,\nGujarat 380059"
+                                       }
+                                   ]
+                               },
+                               {
+                                   "type": "image",
+                                   "width": 200,
+                                   "height": 200,
+                                   "align": "right",
+                                   "verticalAlign": "middle",
+                                   "url": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg"
+                               }
+                           ]
+                       },
+                       {
+                           "type": "divider"
+                       },
+                       {
+                           "type": "list",
+                           "items": [
+                               {
+                                   "type": "item_list",
+                                   "style": "button",
+                                   "items": [
+                                       {
+                                           "type": "button",
+                                           "label": "Order Again"
+                                       },
+                                       {
+                                           "type": "button",
+                                           "label": "Report",
+                                           "style": "error"
+                                       },
+                                       {
+                                           "type": "button",
+                                           "label": "Rate Us",
+                                           "style": "success"
+                                       }
+                                   ]
+                               }
+                           ]
+                       }
+                   ]
+               }
+           }
+       });
+   });
+```
+
+#### Json-to-html
+![dashboard](screenshots/json-sample.png)
+```
+app.post("/json-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "json-to-html",
+                        "json": [
+                            {
+                                "attributes": [],
+                                "children": [
+                                    {
+                                        "textContent": "hello from",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "attributes": [],
+                                        "children": [
+                                            {
+                                                "textContent": "bot.",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "tagName": "strong",
+                                        "type": "element"
+                                    },
+                                    {
+                                        "attributes": [],
+                                        "children": [
+                                            {
+                                                "textContent": "this text will show in italic format.",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "tagName": "em",
+                                        "type": "element"
+                                    },
+                                    {
+                                        "attributes": [],
+                                        "children": [
+                                            {
+                                                "textContent": "underline.",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "tagName": "u",
+                                        "type": "element"
+                                    }
+                                ],
+                                "tagName": "p",
+                                "type": "element"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
+#### Checkbox | input/textarea | radio | single-select |
+![dashboard](screenshots/mix-sample2.png)
+```
+app.post("/mix1-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "_comment1": "this is checkbox",
+                        "type": "checkbox",
+                        "label": "Sample checkbox example",
+                        "value": "",
+                        "items": [
+                            {
+                                "label": "Choice - 1",
+                                "value": "1",
+                                "checked": ""
+                            },
+                            {
+                                "label": "Choice - 2",
+                                "value": "2",
+                                "checked": ""
+                            },
+                            {
+                                "label": "Choice - 3",
+                                "value": "3",
+                                "checked": ""
+                            },
+                            {
+                                "label": "Choice - 4",
+                                "value": "4",
+                                "checked": ""
+                            }
+                        ]
+                    },
+                    {
+                        "_comment2": "this is input/textarea",
+                        "type": "input", //input/textarea
+                        "label": "Sample normal input field",
+                        "value": "",
+                        "placeholder": "Type here.."
+                    },
+                    {
+                        "type": "input", //input/textarea
+                        "label": "Sample input with action button",
+                        "value": "",
+                        "placeholder": "Type here..",
+                        "action": {
+                            "type": "event",
+                            "value": "acquireIO.trigger('setInputValue','Hi', true)"
+                        }
+                    },
+                    {
+                        "type": "textarea", //input/textarea
+                        "label": "Sample textarea",
+                        "value": "",
+                        "placeholder": "Type here.."
+                    },
+                    {
+                        "type": "textarea", //input/textarea
+                        "label": "Sample textarea with action button",
+                        "value": "",
+                        "placeholder": "Type here..",
+                        "action": {
+                            "type": "event",
+                            "value": "acquireIO.trigger('setInputValue','Hello', true)"
+                        }
+                    },
+                    {
+                        "_comment3": "this is radio button",
+                        "id": "chkb",
+                        "type": "radio",
+                        "label": "Sample radio button example",
+                        "value": "",
+                        "items": [
+                            {
+                                "label": "Choice - 1",
+                                "value": "`",
+                                "checked": ""
+                            },
+                            {
+                                "label": "Choice - 2",
+                                "value": "2",
+                                "checked": ""
+                            },
+                            {
+                                "label": "Choice - 3",
+                                "value": "3",
+                                "checked": ""
+                            }
+
+                        ]
+                    },
+                    {
+                        "_comment4": "this is single-select",
+                        "type": "single-select",
+                        "label": "Sample single select",
+                        "items": [
+                            {
+                                "label": "Select 1",
+                                "value": "1",
+                                "id": "1"
+                            },
+                            {
+                                "label": "Select 2",
+                                "value": "2",
+                                "id": "2"
+                            },
+                            {
+                                "label": "Select 3",
+                                "value": "3",
+                                "id": "3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
+#### badge | grid
+![dashboard](screenshots/mix-sample3.png)
+```
+app.post("/mix2-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "badge",
+                        "text": "Normal Badge"
+                    },
+                    {
+                        "type": "badge",
+                        "text": "Error Badge",
+                        "style": "error"
+                    },
+                    {
+                        "type": "badge",
+                        "text": "Success Badge",
+                        "style": "success"
+                    },
+                    {
+                        "type": "badge",
+                        "text": "Warning Badge",
+                        "style": "warning"
+                    },
+                    {
+                        "type": "badge",
+                        "text": "Mute Badge",
+                        "style": "muted"
+                    },
+                    {
+                        "_comment2": "this is a grid",
+                        "type": "grid",
+                        "header": [
+                            {
+                                "key": "name",
+                                "text": "Name"
+                            },
+                            {
+                                "key": "email",
+                                "text": "Email Id"
+                            }
+                        ],
+                        "data": [
+                            {
+                                "name": "Ellan",
+                                "email": "ellan@ellan.com",
+                            },
+                            {
+                                "name": "Jonas",
+                                "email": "Mike@Mike.com"
+                            },
+                            {
+
+                                "name": "Mike",
+                                "email": "Mike@Mike.com"
+                            },
+                            {
+                                "name": "Janet",
+                                "email": "janet@janet.com",
+                            },
+                            {
+                                "name": "Sheldon",
+                                "email": "sheldon@sheldon.com",
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
+
