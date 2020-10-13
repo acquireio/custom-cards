@@ -77,7 +77,6 @@ app.post("/multi-initialize", (req, res, next) => {
               "canvas": {
                   "content": {
                       "components": [
-                          "_comment": "comment text goes here...",
                           {
                               "type": "divider",
                               "style": "dotted", //dotted/solid (default solid)
