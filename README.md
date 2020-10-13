@@ -6,14 +6,14 @@
 ## Introduction
 Acquire cards are used to place containers around the respective set of information. The cards allow data display of external systems to be shown within the unified view of the Acquire. 
 Acquire cards appear within the middle and right hand positions of the dashboard.
+
 Acquire has 2 types of cards <strong>app-custom-cards</strong> and <strong>manual-cards</strong>.
 Once the Acquire card is configured correctly, your external system information will appear in the Acquire Agent's dashboard.
 
 #### Use case:
 You use the Acquire and manage orders on an external system but the agent wants to see the status of the particular contact's order, then the agent can view, change the information in the Acquire dashboard without switching through the card.
 
-Example of Card:
-![dashboard](screenshots/order_sample.png )
+#### Example of Card:
 ![dashboard](screenshots/dashboard.png)
 
 At the time of sending data through these cards, customer name, email, phone and other fields will be received from the Acquire, you can get that customer data from external systems.
@@ -32,6 +32,105 @@ At the time of sending data through these cards, customer name, email, phone and
 * General-cards (Right-side of agent dashboard)
 
 <br>
+
+#### How to configure Acquire Card:
+
+##### Your side: 
+You must add an API endpoint that responds to GET requests with a query and returns a JSON payload. In return, you can send a default template or custom HTML. Examples of default templates are given below.
+##### Create App Custom Card: 
+ * Go to AppStore.
+ * Click on Custom Card App & Install.
+ * Add your API endpoint URL in the app settings to get the information on the card. Apart from this, you can also add an optional Authorization Header(Basic Auth or Bearer). 
+ `Example: https://example.com/user?email={{contact.email}}&field={{contact.custom_field_key}}`
+ this endpoint URL Acquire will call for dynamic data and It can return the default template or custom HTML.
+ * Add the default template or custom HTML, that will provide information from external systems.
+ 
+ #### Example end point code:
+ ```
+app.post("/card-initialize", (req, res, next) => {
+    console.log('contact-information', req.body);
+    res.send({
+        "canvas": {
+            "content": {
+                "components": [
+                    {
+                        "type": "card",
+                        "style": "single",
+                        "items": [
+                            {
+                                "type": "item",
+                                "title": "Judi Colton",
+                                "subtitle": "Tech Head, California",
+                                "bordered": true,
+                                "align": "center",
+                                "image": {
+                                    "url": "https://cdn.pixabay.com/photo/2015/03/03/18/58/girl-657753_960_720.jpg",
+                                    "height": 300
+                                },
+                                "action": {
+                                    "type": "url",
+                                    "url": "https://google.com/0"
+                                },
+                                "text": [
+                                    {
+                                        "type": "text",
+                                        "text": "This is paragraph text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "displayStyle": "paragraph"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is muted text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "muted"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "error"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "This is error text. Here's a [link](https://developers.intercom.io/). Here's some *bold text*. Lorem ipsum.",
+                                        "style": "success"
+                                    }
+                                ],
+                                "buttons": [
+                                    {
+                                        "type": "button",
+                                        "label": "Muted button",
+                                        "style": "muted",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/5"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "label": "Error button",
+                                        "style": "error",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/6"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "label": "Success button",
+                                        "style": "success",
+                                        "action": {
+                                            "type": "url",
+                                            "url": "https://google.com/7"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+```
 
 #### Supported Types & default template components schema
 
