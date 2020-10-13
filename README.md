@@ -45,7 +45,7 @@ You must add an API endpoint that responds to GET requests with a query and retu
  this endpoint URL Acquire will call for dynamic data and It can return the default template or custom HTML.
  * Add the default template or custom HTML, that will provide information from external systems.
  
- #### Example end point code:
+ #### Example endpoint URL code:
  ```
 app.post("/card-initialize", (req, res, next) => {
     console.log('contact-information', req.body);
