@@ -33,10 +33,10 @@ At the time of sending data through these cards, customer name, email, phone and
 
 <br>
 
-### App Custom Card
-
-
 #### Supported Types & default template components schema
+
+When creating a card, there is a collection of supported types that can be included in the schema. These types are essentially UI controls that interact to provide content or data to the user card.
+
 |Name|description| Notes |
 |---|---|---|
 |<code>Text</code>|<strong>type</strong> - text<br><strong>text</strong> - this is demo text<br> <strong>displayStyle</strong> - header/paragraph <br> <strong>style</strong> - error/muted/success/normal <br><strong>align</strong> - right/left/center|Represents a paragraph|
@@ -49,12 +49,113 @@ At the time of sending data through these cards, customer name, email, phone and
 |<code>spacer</code>|<strong>type</strong> - spacer<br><strong>size</strong> - dxs/s/m/l/xl|Create space|
 |<code>Button</code>|<strong>type</strong> - button<br><strong>label</strong> - text to display<br> <strong>style</strong> - primary/secondary/link/muted/error/success/outlined  (default primary)<br> <strong>size</strong> - xs/s/m/l/xl (default m)<br> <strong>action</strong> - same as other individual item|Defines a clickable|
 |<code>Feedback</code>|<strong>type</strong> - feedback<br><strong>label</strong> - string text to display<br> <strong>style</strong> - star/ thumbs<br> <strong>ratings</strong> - number (if style is star > if >5 then it will show max 5) (default is 5)|Rating picker|
-|<code>Section</code>|backend - <br>frontend - |Multiselect dropdown list|
-|<code>Json-to-html</code>|backend - <br>frontend - |backend - <br>frontend - |
-|<code>Checkbox</code>|backend - <br>frontend - |Checkbox item list|
-|<code>Input</code>|backend - <br>frontend - |backend - <br>frontend - |
-|<code>Radio</code>|backend - <br>frontend - |Radio option list|
-|<code>Single Select</code>|backend - <br>frontend - |Single select dropdown list|
-|<code>Badge</code>|backend - <br>frontend - |backend - <br>frontend - |
-|<code>Grid</code>|backend - <br>frontend - |backend - <br>frontend - |
+|<code>Section</code>|<strong>type</strong> - section<br><strong>Items</strong> - array of components||
+|<code>Json-to-html</code>|<strong>type</strong> - json-to-htm<br><strong>json</strong> - json object of html markdown||
+|<code>Checkbox</code>|<strong>type</strong> - checkbox<br><strong>label</strong> - text to display<br><strong>value</strong> - <br><strong>items</strong> - array of checkbox item (label, value, checked)<br><strong>action</strong> - same as other individual item|Checkbox item list|
+|<code>Input</code>|<strong>type</strong> - input/textarea<br><strong>label</strong> - text to display<br><strong>value</strong> - <br><strong>placeholder</strong> - <br><strong>action</strong> - same as other individual item|Specifies an input field where the user can enter data|
+|<code>Radio</code>|<strong>type</strong> - radio<br><strong>label</strong> - text to display<br><strong>value</strong> - <br><strong>id</strong> - <br><strong>action</strong> - same as other individual item<br><strong>Items</strong> - array of radio item (label, value, checked)|Radio option list|
+|<code>Single Select</code>|<strong>type</strong> - single-select<br><strong>label</strong> - text to display<br><strong>Items</strong> - array of item  to display in dropdown (label, value, id)|Single select dropdown list|
+|<code>Badge</code>|<strong>type</strong> - badge<br><strong>text</strong> - text to display<br><strong>style </strong> - primary/success/error/warning/muted (default primary)<br><strong>bordered</strong> - true/false<br><strong>rounded</strong> -  true/false<br><strong>displayType</strong> - primary/secondary/advanced/advanced-secondary|Badges are used to add additional information to any content|
+|<code>Grid</code>|<strong>type</strong> - grid<br><strong>header</strong> - array of header data<br><code>[{<br><strong>key </strong> -unique key for data (must be same for body data)<br><strong>text</strong> - text to display(required)<br><strong>width</strong> - to uniquely give width to columns (not required)<br>}]</code><br><strong>data</strong> - <code>[{array of body data}]</code><br><strong>title</strong> - title of the grid (not required)<br><strong>emptyChar</strong> - text to display when there is no data (not required)<br><strong>columnsWidth</strong> - same (for same width of columns ) (not required)|A grid consists of a parent element, with one or more child elements|
 
+#### Text
+![dashboard](screenshots/text-sample.png)
+#### Image
+![dashboard](screenshots/image-sample.png)
+#### Link
+![dashboard](screenshots/link-sample.png)
+#### Data Table
+![dashboard](screenshots/table-sample.png)
+#### Cards
+![dashboard](screenshots/card-sample.png)
+#### [divider | button | spacer | feedback]
+![dashboard](screenshots/mix-sample1.png)
+```
+app.post("/multi-initialize", (req, res, next) => {
+          console.log('contact-information', req.body);
+          res.send({
+              "canvas": {
+                  "content": {
+                      "components": [
+                          "_comment": "comment text goes here...",
+                          {
+                              "type": "divider",
+                              "style": "dotted", //dotted/solid (default solid)
+                          },
+                          {
+                              "type": "spacer",
+                              "size": "xl" // xs/x/m/l/xl (top bottom spaces)(default is m),
+                              "fullWidth" : false //true/false (default false)
+                          },
+                          {
+                              "type": "button",
+                              "label": "Normal Button"
+                          },
+                          {
+                              "type": "button",
+                              "label": "Normal Button",
+                              "style": "primary" //primary/secondary/link/muted/error/success/outlined  (default primary)
+                          },
+                          {
+                              "type": "button",
+                              "label": "Secondary button",
+                              "style": "secondary"
+                          },
+                          {
+                              "type": "spacer",
+                              "size": "xl" // xs/s/m/l/xl (default m)
+                          },
+                          {
+                              "type": "button",
+                              "label": "Outlined button",
+                              "style": "outlined"
+                          },
+                          {
+                              "type": "button",
+                              "label": "Link button",
+                              "style": "link"
+                          },
+                          {
+                              "type": "button",
+                              "label": "Muted button",
+                              "style": "muted"
+                          },
+                          {
+                              "type": "button",
+                              "label": "Error button",
+                              "style": "error"
+                          },
+                          {
+                              "type": "button",
+                              "label": "Success button",
+                              "style": "success"
+                          },
+                          {
+                              "type": "spacer",
+                              "size": "xl"
+                          },
+                          {
+                              "type": "feedback",
+                              "style": "star", //star/ thumbs
+                              "label": "How good are you in frontend technologies",
+                              "rating": 9 //number (if style is star > if >5 then it will show max 5) (default is 5)
+                          },
+                          {
+                              "type": "feedback",
+                              "style": "thumbs",
+                              "label": "How good are you in backend technologies"
+                          },
+                          {
+                              "type": "feedback",
+                              "style": "thumbs",
+                              "size": "l",
+                              "label": "Thumbs rating variation"
+                          }
+                      ]
+                  }
+              }
+          });
+      });
+```
+
+#### Text
