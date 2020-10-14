@@ -50,11 +50,11 @@ You must add an API endpoint that responds to GET requests with a query and retu
  
 ![appstore](screenshots/app-custom-card.png)
 
-![appstore](screenshots/app-custom-card-1.png)
+![appstore1](screenshots/app-custom-card-1.png)
 
-![appstore](screenshots/sample-card-return.png)
+![appstore2](screenshots/sample-card-return.png)
 
-![appstore](screenshots/card-view.png)
+![appstore3](screenshots/card-view.png)
  
  
  ### Example endpoint URL code:
