@@ -10,6 +10,8 @@ Acquire cards appear within the middle and right hand positions of the dashboard
 Acquire has 2 types of cards <strong>app-custom-cards</strong> and <strong>manual-cards</strong>.
 Once the Acquire card is configured correctly, your external system information will appear in the Acquire Agent's dashboard.
 
+Acquire card designs are fully customizable. This document explains how to customize the design using Acquire components templates or custom HTML.
+
 #### Use case:
 You use the Acquire and manage orders on an external system but the agent wants to see the status of the particular contact's order, then the agent can view, change the information in the Acquire dashboard without switching through the card.
 
@@ -20,24 +22,25 @@ At the time of sending data through these cards, customer name, email, phone and
 <br>
 
 ### There are currently two types of custom card making:
-* App Custom Card 
-* Manual card 
+* [App Custom Card](#markdown-header-app-custom-card) 
+* [Manual Card](#markdown-header-manual-card)
 
-#### Theme options
+### Theme options
 * Default template
 * Custom HTML
 
-#### Card Location
+### Card Location
 * Interaction-cards (Middle of agent dashboard)
 * General-cards (Right-side of agent dashboard)
 
 <br>
 
-#### How to configure Acquire Card:
+## App Custom Card
+### Procedure:
 
-##### Your side: 
+#### Your side: 
 You must add an API endpoint that responds to GET requests with a query and returns a JSON payload. In return, you can send a default template or custom HTML. Examples of default templates are given below.
-##### Create App Custom Card: 
+#### Create App Custom Card: 
  * Go to AppStore.
  * Click on Custom Card App & Install.
  * Add your API endpoint URL in the app settings to get the information on the card. Apart from this, you can also add an optional Authorization Header(Basic Auth or Bearer). 
@@ -45,7 +48,16 @@ You must add an API endpoint that responds to GET requests with a query and retu
  this endpoint URL Acquire will call for dynamic data and It can return the default template or custom HTML.
  * Add the default template or custom HTML, that will provide information from external systems.
  
- #### Example endpoint URL code:
+![appstore](screenshots/app-custom-card.png)
+
+![appstore](screenshots/app-custom-card-1.png)
+
+![appstore](screenshots/sample-card-return.png)
+
+![appstore](screenshots/card-view.png)
+ 
+ 
+ ### Example endpoint URL code:
  ```
 app.post("/card-initialize", (req, res, next) => {
     console.log('contact-information', req.body);
@@ -132,9 +144,47 @@ app.post("/card-initialize", (req, res, next) => {
 });
 ```
 
+## Manual Card <a name="manual_card"></a>
+
+### Procedure
+
+To create manual cards:
+ 1. First of all, you have to configure the Acquire Card space & location. It can be done by using [create card API](https://apidocs.acquire.io/#03597018-51dc-4e3f-9dc2-401ca5422b68). 
+ Make sure that you have added the <code>initialize_url</code> endpoint URL properly. At this endpoint you will get contact data and you can return a customized template or HTML with the data.
+ 
+ 2. Test card
+ 
+  
+ ##### Sample code to create ard space & location: 
+  ```
+ var request = require('request');
+ 
+ var options = {
+ 'method': 'POST',
+ 'url': 'https://{{YOUR_ACQUIRE_ACCOUNT_URL}}/api/v1/crm/ui-component',
+ 'headers': {
+ 'Authorization': 'Bearer {{YOUR_API_KEY}}',
+ 'Content-Type': 'application/json'
+ },
+ 
+ body: JSON.stringify({"type":"tab","config":{"label":"Sample Card","canvas":{"content_url":true},"action_key":"test-json","action_type":"initialize_tab","iconImageUrl":"./assets/app-store/acquire_saml.svg","initialize_url":"https://226069089919.ngrok.io/mix2-initialize"},"displayScope":"contact_action","area":"backend"})
+ };
+ 
+ request(options, function (error, response) {
+ if (error) throw new Error(error);
+ console.log(response.body);
+ });
+ 
+ ```
+
+
+
+
 #### Supported Types & default template components schema
 
 When creating a card, there is a collection of supported types that can be included in the schema. These types are essentially UI controls that interact to provide content or data to the user card.
+
+<strong>Available JSON key for templating:</strong>
 
 |Name|description| Notes |
 |---|---|---|
