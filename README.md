@@ -144,7 +144,7 @@ app.post("/card-initialize", (req, res, next) => {
 });
 ```
 
-## Manual Card <a name="manual_card"></a>
+## Manual Card
 
 ### Procedure
 
