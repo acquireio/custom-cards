@@ -22,8 +22,8 @@ At the time of sending data through these cards, customer name, email, phone and
 <br>
 
 ### There are currently two types of custom card making:
-* [App Custom Card](#markdown-header-app-custom-card) 
-* [Manual Card](#markdown-header-manual-card)
+* [App Custom Card](#app-custom-card) 
+* [Manual Card](#manual-card)
 
 ### Theme options
 * Default template
