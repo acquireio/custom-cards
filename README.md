@@ -12,7 +12,7 @@ Once the Acquire card is configured correctly, your external system information 
 
 Acquire card designs are fully customizable. This document explains how to customize the design using Acquire components templates or custom HTML.
 
-Card configuration is very easy for developers who are familiar with standard technologies for making cards. To send a card data through your incoming endpoint, you post a JSON or Custom HTML to the endpoint URL. 
+Card configuration is incredibly easy for developers who are conversant in standard technologies for creating cards. To send a card data through your incoming endpoint, you post a JSON or Custom HTML to the endpoint URL. 
 This JSON or HTML containing inputs, labels, multi-select, or tabular data [more](#text).
 
 #### Use case:
@@ -22,7 +22,7 @@ At the time of sending data through these cards, customer name, email, phone and
 <br>
 
 ####Editing: 
-The Acquire Card provides end-user data editing, card editing is done in the same HTML that you have configured.
+ The Acquire Card provides end-user data editing, card editing is done within the same HTML that you just have returned from <code>initialize_url</code> URL.
 
 ### There are currently two categories of cards available:
 * [App Custom Card](#app-custom-card) 
