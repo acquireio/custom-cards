@@ -19,8 +19,8 @@ At the time of sending data through these cards, customer name, email, phone and
 <br>
 
 ### There are currently two types of custom card making:
-* [App Custom Card](#app-custom-card target="_blank) 
-* [Manual Card](#manual-card target="_blank) 
+* [App Custom Card](#app-custom-card) 
+* [Manual Card](#manual-card)
 
 ### Theme options
 * Default template
@@ -156,7 +156,7 @@ app.post("/card-initialize", (req, res, next) => {
 ### Procedure
 
 To create manual cards:
- 1. First of all, you have to configure the Acquire Card space & location. It can be done by using [create card API](https://apidocs.acquire.io/#03597018-51dc-4e3f-9dc2-401ca5422b68 target="_blank). 
+ 1. First of all, you have to configure the Acquire Card space & location. It can be done by using [create card API](https://apidocs.acquire.io/#03597018-51dc-4e3f-9dc2-401ca5422b68). 
  Make sure that you have added the <code>initialize_url</code> endpoint URL properly. At this endpoint you will get contact data and you can return a customized template or HTML with the data.
  
  2. Test card
