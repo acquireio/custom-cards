@@ -29,7 +29,7 @@ At the time of sending data through these cards, customer name, email, phone and
 ### Card Location
 * [Interaction-cards](https://apidocs.acquire.io/#c72d4b21-b205-4d2d-b1d8-deee6a135a0e) (Middle of agent dashboard)
 
-![dashboard](screenshots/interaction-card.png)
+![dashboard](screenshots/interaction-cards.png)
 
 * [General-cards](https://apidocs.acquire.io/#fe19d64f-96ce-4421-80b4-c847b0470e41) (Right-side of agent dashboard)
 
@@ -53,13 +53,13 @@ You must add an API endpoint that responds to GET requests with a query and retu
 ![appstore](screenshots/app-custom-card.png)
 <br>
 --------------------------------------------------------------------------------
-![appstore1](screenshots/app-custom-card-1.png)
+![appstore1](screenshots/custom-card-1.png)
 <br>
 --------------------------------------------------------------------------------
-![appstore2](screenshots/sample-card-return.png)
+![appstore2](screenshots/card-return.png)
 <br>
 --------------------------------------------------------------------------------
-![appstore3](screenshots/card-view.png)
+![appstore3](screenshots/cards-view.png)
  <br>
  --------------------------------------------------------------------------------
  
