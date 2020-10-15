@@ -15,9 +15,6 @@ Acquire card designs are fully customizable. This document explains how to custo
 #### Use case:
 You use the Acquire and manage orders on an external system but the agent wants to see the status of the particular contact's order, then the agent can view, change the information in the Acquire dashboard without switching through the card.
 
-#### Example of Card:
-![dashboard](screenshots/dashboard.png)
-
 At the time of sending data through these cards, customer name, email, phone and other fields will be received from the Acquire, you can get that customer data from external systems.
 <br>
 
