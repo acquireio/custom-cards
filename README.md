@@ -12,13 +12,19 @@ Once the Acquire card is configured correctly, your external system information 
 
 Acquire card designs are fully customizable. This document explains how to customize the design using Acquire components templates or custom HTML.
 
+Card configuration is very easy for developers who are familiar with standard technologies for making cards. To send a card data through your incoming endpoint, you post a JSON or Custom HTML to the endpoint URL. 
+This JSON or HTML containing inputs, labels, multi-select, or tabular data [more](#text).
+
 #### Use case:
 You use the Acquire and manage orders on an external system but the agent wants to see the status of the particular contact's order, then the agent can view, change the information in the Acquire dashboard without switching through the card.
 
 At the time of sending data through these cards, customer name, email, phone and other fields will be received from the Acquire, you can get that customer data from external systems.
 <br>
 
-### There are currently two types of custom card making:
+####Editing: 
+The Acquire Card provides end-user data editing, card editing is done in the same HTML that you have configured.
+
+### There are currently two categories of cards available:
 * [App Custom Card](#app-custom-card) 
 * [Manual Card](#manual-card)
 
@@ -159,7 +165,8 @@ To create manual cards:
  1. First of all, you have to configure the Acquire Card space & location. It can be done by using [create card API](https://apidocs.acquire.io/#03597018-51dc-4e3f-9dc2-401ca5422b68). 
  Make sure that you have added the <code>initialize_url</code> endpoint URL properly. At this endpoint you will get contact data and you can return a customized template or HTML with the data.
  
- 2. Test card
+ 2. Create and return [JSON template](#text) or custom HTML from your endpoint <code>initialize_url</code>.
+ 3. The JSON template or HTML sent from your endpoint url will render on the agent dashboard.
  
   
  ##### Sample code to create ard space & location: 
