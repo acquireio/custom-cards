@@ -33,11 +33,11 @@ At the time of sending data through these cards, customer name, email, phone and
 * Custom HTML
 
 ### Card Location
-* [Interaction-cards](https://apidocs.acquire.io/#c72d4b21-b205-4d2d-b1d8-deee6a135a0e) (Middle of agent dashboard)
+* [Timeline-cards](https://apidocs.acquire.io/#c72d4b21-b205-4d2d-b1d8-deee6a135a0e) (Middle of agent dashboard)
 
 ![dashboard](screenshots/interaction-cards.png)
 
-* [General-cards](https://apidocs.acquire.io/#fe19d64f-96ce-4421-80b4-c847b0470e41) (Right-side of agent dashboard)
+* [Exclusive-cards](https://apidocs.acquire.io/#fe19d64f-96ce-4421-80b4-c847b0470e41) (Right-side of agent dashboard)
 
 ![dashboard](screenshots/dashboard.png)
 
